@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="id" class="scroll-smooth dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Meta SEO & Pratinjau Tautan (F6 pada PRD) -->
+    <title>Radit — Web Developer (PHP &amp; Laravel)</title>
+    <meta name="description" content="Portofolio Radit, lulusan Teknik Informatika yang berfokus pada pengembangan web (PHP, Laravel, MySQL, React) dengan bekal jaringan dan cloud." />
+    <meta name="author" content="Radit" />
+    <meta name="theme-color" content="#09090b" />
+
+    <!-- Google Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS via CDN dengan tema gelap + aksen oranye -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              // Aksen Oranye Enerjik & Elegan
+              accent: {
+                DEFAULT: '#f97316', // orange-500
+                hover: '#ea580c',   // orange-600
+                subtle: '#431407',  // orange-950
+                light: '#fb923c',   // orange-400
+              }
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+  <body class="bg-zinc-950 text-zinc-100 font-sans antialiased selection:bg-orange-500/30 selection:text-orange-200">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
