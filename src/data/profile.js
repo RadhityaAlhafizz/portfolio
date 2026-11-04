@@ -1,8 +1,4 @@
-/**
- * Data Profil Utama Radit
- * Menjadi Single Source of Truth (SSOT) untuk seluruh informasi kontak, peran,
- * dan tautan media sosial agar tidak perlu diubah di banyak tempat secara terpisah.
- */
+
 export const PROFILE = {
   name: 'Radhitya',
   fullName: 'Radhitya Arrayyan Alhafizh',
@@ -18,8 +14,8 @@ export const PROFILE = {
   email: 'radhityaalhafizz@gmail.com',
   cvUrl: '/CV_Radhitya%20Arrayyan%20Alhafizh.pdf',
   socials: {
-    github: 'https://github.com/',
-    linkedin: 'https://linkedin.com',
+    github: 'https://github.com/RadhityaAlhafizz/',
+    linkedin: 'www.linkedin.com/in/radhityaarrayyanalhafizh',
   },
   badges: [
     'Backend & Fullstack',

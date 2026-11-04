@@ -1,3 +1,19 @@
+@import "tailwindcss";
+
+/* darkMode: 'class' pada v3 -> v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Pengganti tailwind.config di index.html */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Aksen oranye */
+  --color-accent: #f97316;
+  --color-accent-hover: #ea580c;
+  --color-accent-subtle: #431407;
+  --color-accent-light: #fb923c;
+}
+
 /* CSS Global */
 @layer base {
   html {
@@ -7,7 +23,10 @@
 
 /* Aksesibilitas: Hormati preferensi pengguna yang mematikan animasi */
 @media (prefers-reduced-motion: reduce) {
-  *, ::before, ::after {
+
+  *,
+  ::before,
+  ::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
