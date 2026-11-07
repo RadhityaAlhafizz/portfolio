@@ -4,11 +4,17 @@ import Badge from '../../ui/Badge';
 import Button from '../../ui/Button';
 import { Icon } from '../../ui/Icons';
 import CRTWarp from '../../../component/CRTWarp';
+import BlurText from "../../../component/BlurText";
 
 /**
  * Komponen Bagian: HeroSection (Tema Gelap + Aksen Oranye)
  */
 export default function HeroSection() {
+  // Handler dipindah ke sini — di luar return(), di dalam fungsi komponen
+  const handleAnimationComplete = () => {
+    console.log('Animation completed!');
+  };
+
   return (
     <div id="hero" className="relative w-full min-h-screen overflow-hidden bg-[#0a0a0a]">
       <div className='absolute inset-0'>
@@ -33,6 +39,7 @@ export default function HeroSection() {
           bloomRadius={1}
           rgbShift={0.003}
           noise={0.1}
+
           flicker={0.15}
           interference={0.2}
           vignette={0.3}
@@ -48,13 +55,23 @@ export default function HeroSection() {
       {/* Konten di tengah */}
       <div className="relative z-10 flex min-h-screen items-end justify-start px-6 pb-16 md:px-12 md:pb-20">
         <div className="max-w-3xl text-left">
-
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-100 leading-tight">
-            Halo, saya <span className="text-white-500">{PROFILE.name}</span>.
-          </h1>
-          <p className="mt-2 text-xl sm:text-2xl font-semibold text-zinc-300">
-            {PROFILE.headline}
-          </p>
+          <BlurText
+            text="Halo, Saya Radhitya"
+            effect="focus"
+            animateBy="words"
+            direction="bottom"
+            staggerFrom="start"
+            trigger="click"
+            delay={200}
+            stepDuration={0.35}
+            blur={10}
+            distance={50}
+            onAnimationComplete={handleAnimationComplete}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-100 leading-tight"
+            loop={true}
+            loopDelay={2}
+            focusOnHover={true}
+          />
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Button

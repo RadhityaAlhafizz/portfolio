@@ -1,9 +1,12 @@
 import { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useLockBodyScroll } from '../../hooks/useLockBodyScroll';
 import { Icon } from './Icons';
 
 /**
  * Reusable Accessible Modal Shell (Tema Gelap)
+ * Menggunakan React Portal agar selalu ter-render tepat di tengah viewport layar
+ * dan terhindar dari batas CSS transform/overflow container pembungkusnya.
  */
 export default function Modal({
   isOpen,
@@ -31,19 +34,19 @@ export default function Modal({
 
   if (!isOpen) return null;
 
-  return (
+  const modalContent = (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-xs"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
     >
       <div
-        className={`bg-zinc-900 rounded-lg border border-zinc-800 w-full ${maxWidth} max-h-[90vh] overflow-y-auto p-6 sm:p-8 shadow-2xl text-zinc-100`}
+        className={`relative bg-zinc-900 rounded-xl border border-zinc-800 w-full ${maxWidth} max-h-[85vh] flex flex-col shadow-2xl text-zinc-100 my-auto`}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header Modal */}
-        <div className="flex items-start justify-between gap-4 pb-4 border-b border-zinc-800">
+        {/* Header Modal - Sticky di atas */}
+        <div className="flex items-start justify-between gap-4 p-5 sm:p-6 border-b border-zinc-800 bg-zinc-900 rounded-t-xl shrink-0">
           <div>
             {subtitle && <div className="mb-2">{subtitle}</div>}
             {title && (
@@ -56,21 +59,29 @@ export default function Modal({
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 rounded-md text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800 transition-colors"
+            className="p-1.5 rounded-md text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800 transition-colors cursor-pointer"
             aria-label="Tutup modal"
           >
             <Icon.Close className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Konten Utama */}
-        <div className="mt-5">{children}</div>
+        {/* Konten Utama - Scrollable jika teks panjang */}
+        <div className="overflow-y-auto p-5 sm:p-6 flex-1">
+          {children}
+        </div>
 
-        {/* Footer */}
+        {/* Footer - Tetap terlihat di bawah */}
         {footer && (
-          <div className="mt-8 pt-4 border-t border-zinc-800">{footer}</div>
+          <div className="p-5 sm:p-6 pt-4 border-t border-zinc-800 bg-zinc-900/60 rounded-b-xl shrink-0">
+            {footer}
+          </div>
         )}
       </div>
     </div>
   );
+
+  return typeof document !== 'undefined'
+    ? createPortal(modalContent, document.body)
+    : null;
 }
