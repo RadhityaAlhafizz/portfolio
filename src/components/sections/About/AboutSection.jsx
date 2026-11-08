@@ -16,6 +16,23 @@ export default function AboutSection() {
       />
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+        {/* Kolom Fakta Cepat */}
+        <div className="p-5 shadow-xs space-y-4 ">
+          <HoloCard image={card} alt="Radhitya" preset="gold"
+            foilColor="#e2e6ec"
+            intensity={0.25}
+            scale={0.5}
+            edgeSparkle={0.3}
+            frame={2}
+            glare={0.5}
+            tiltMax={14}
+            hoverScale={1.04}
+            radius={14}
+            width={320}
+            idle
+            shadow
+          />
+        </div>
 
         {/* Kolom Narasi */}
         <div className="md:col-span-2 space-y-4 text-zinc-300 leading-relaxed text-sm sm:text-base">
@@ -39,23 +56,7 @@ export default function AboutSection() {
           </p>
         </div>
 
-        {/* Kolom Fakta Cepat */}
-        <div className="p-5 shadow-xs space-y-4 ">
-          <HoloCard image={card} alt="Radhitya" preset="gold"
-            foilColor="#e2e6ec"
-            intensity={0.25}
-            scale={0.5}
-            edgeSparkle={0.3}
-            frame={2}
-            glare={0.5}
-            tiltMax={14}
-            hoverScale={1.04}
-            radius={14}
-            width={320}
-            idle
-            shadow
-          />
-        </div>
+
 
       </div>
     </Section>

@@ -55,6 +55,17 @@ export default function ProjectDetailModal({ project, onClose }) {
     >
       <div className="space-y-5 text-sm sm:text-base text-zinc-300">
         
+        {/* Gambar Pratinjau Projek */}
+        {project.image && (
+          <div className="relative h-48 sm:h-60 w-full overflow-hidden rounded-xl border border-zinc-800 bg-zinc-950">
+            <img
+              src={project.image}
+              alt={project.title}
+              className="h-full w-full object-cover"
+            />
+          </div>
+        )}
+
         {/* Deskripsi Lengkap */}
         <div>
           <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-1">

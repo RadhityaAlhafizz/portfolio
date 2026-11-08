@@ -73,7 +73,7 @@ export default function HeroSection() {
             focusOnHover={true}
           />
 
-          <div className="mt-8 flex flex-wrap items-center gap-3">
+          <div className="mt-4 flex flex-wrap items-center gap-3">
             <Button
               href={PROFILE.cvUrl}
               target="_blank"
